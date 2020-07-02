@@ -7,6 +7,9 @@
 	<js-module name="analyticssdk" src="www/analyticssdk.js">
 		<clobbers target="AnalyticsAgent" />
 	</js-module>
+	<js-module name="socialsdk" src="www/socialsdk.js">
+		<clobbers target="SocialAgent" />
+	</js-module>
 
 	<platform name="android">
 		<config-file target="res/xml/config.xml" parent="/*">
@@ -14,11 +17,17 @@
 				<param name="android-package"
 					value="com.umeng.plugin.AnalyticsSDK" />
 			</feature>
+			<feature name="SocialSDK">
+				<param name="android-package"
+					value="com.umeng.plugin.SocialSDK" />
+			</feature>
 		</config-file>
 
 		<source-file src="src/android/AnalyticsSDK.java"
 			target-dir="src/com/umeng/plugin" />
 		<source-file src="src/android/PGCommonSDK.java"
+			target-dir="src/com/umeng/plugin" />
+		<source-file src="src/android/SocialSDK.java"
 			target-dir="src/com/umeng/plugin" />
 
 		<lib-file src="src/android/libs/umeng-analytics-8.0.0.jar" />
@@ -29,6 +38,9 @@
 		<config-file target="config.xml" parent="/*">
 			<feature name="AnalyticsSDK">
 				<param name="ios-package" value="AnalyticsSDK" />
+			</feature>
+			<feature name="SocialSDK">
+				<param name="ios-package" value="SocialSDK" />
 			</feature>
 		</config-file>
 

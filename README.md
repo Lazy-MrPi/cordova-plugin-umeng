@@ -1,4 +1,6 @@
-# cordova-plugin-umeng-analytics
+# cordova-plugin-umeng
+参考自cordova-plugin-umeng-analytics
+
 此插件集成了Umeng官方最新版本的SDK v8.0.0,github上很多旨在封装此功能的plugin都不能正常工作,尤其是Android（请注意看此插件Android部分PGCommonSDK中对官方init方法的修改，加上了下面这一句：
 Cordova生成的App只有唯一的一个Activity，需要手动统计。）
 ```$xslt
@@ -13,11 +15,11 @@ MobclickAgent.setPageCollectionMode(MobclickAgent.PageMode.LEGACY_MANUAL);
 
 命令行安装：
 ```
-cordova plugin add https://github.com/shineabel/cordova-plugin-umeng-analytics
+cordova plugin add https://github.com/Lazy-MrPi/cordova-plugin-umeng
 ```
 或者cordova项目的config.xml
 ```
-    <plugin name="cordova-plugin-umeng-analytics" spec="git+https://github.com/shineabel/cordova-plugin-umeng-analytics.git" />
+    <plugin name="cordova-plugin-umeng-analytics" spec="git+https://github.com/Lazy-MrPi/cordova-plugin-umeng.git" />
 ```
 
 #Attention
@@ -48,21 +50,22 @@ Android:
  import com.umeng.analytics.MobclickAgent; 
  import com.umeng.commonsdk.UMConfigure; 
  import com.umeng.plugin.PGCommonSDK;
+ import com.umeng.socialize.UMShareAPI;
 
     @Override
-        public void onResume() {
-            super.onResume();
+    public void onResume() {
+        super.onResume();
     
-            MobclickAgent.onPageStart("Home");//Umeng建议写上，此字符串随便定义，与桥接js调用传过来的pageName无关
-            MobclickAgent.onResume(this);
-        }
+        MobclickAgent.onPageStart("Home");//Umeng建议写上，此字符串随便定义，与桥接js调用传过来的pageName无关
+        MobclickAgent.onResume(this);
+    }
     
-        @Override
-        protected void onPause() {
-            super.onPause();
-            MobclickAgent.onPageEnd("Home");//Umeng建议写上，此字符串随便定义，与桥接js调用传过来的pageName无关
-            MobclickAgent.onPause(this);
-        }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MobclickAgent.onPageEnd("Home");//Umeng建议写上，此字符串随便定义，与桥接js调用传过来的pageName无关
+        MobclickAgent.onPause(this);
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -79,6 +82,12 @@ Android:
         loadUrl(launchUrl);
         UMConfigure.setLogEnabled(true); 
         PGCommonSDK.init(this,"your key","your channel",UMConfigure.DEVICE_TYPE_PHONE,"");//初始化SDK
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        super.onActivityResult(requestCode, resultCode, intent);
+        UMShareAPI.get(this).onActivityResult(requestCode,resultCode,intent);
     }
 
  ``` 
