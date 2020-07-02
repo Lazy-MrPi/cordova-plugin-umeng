@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<plugin id="cordova-plugin-umeng-analytics" version="1.3.3"
+<plugin id="cordova-plugin-umeng" version="1.0.0"
 	xmlns="http://apache.org/cordova/ns/plugins/1.0"
 	xmlns:android="http://schemas.android.com/apk/res/android">
-	<name>cordova-plugin-umeng-analytics</name>
+	<name>cordova-plugin-umeng</name>
 
 	<js-module name="analyticssdk" src="www/analyticssdk.js">
 		<clobbers target="AnalyticsAgent" />
@@ -38,9 +38,6 @@
 		<config-file target="config.xml" parent="/*">
 			<feature name="AnalyticsSDK">
 				<param name="ios-package" value="AnalyticsSDK" />
-			</feature>
-			<feature name="SocialSDK">
-				<param name="ios-package" value="SocialSDK" />
 			</feature>
 		</config-file>
 
