@@ -1,0 +1,32 @@
+{
+  "name": "cordova-plugin-umeng",
+  "version": "1.0.0",
+  "description": "this is cordova plugin, come from umeng",
+  "cordova": {
+    "id": "cordova-plugin-umeng",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Lazy-MrPi/cordova-plugin-umeng.git"
+  },
+  "keywords": [
+    "umenganalytics,cordova,ios,android"
+  ],
+  "dependencies": {
+    "xml2js": "^0.4"
+  },
+  "author": "Lazy-MrPi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Lazy-MrPi/cordova-plugin-umeng/issues"
+  },
+  "homepage": "https://github.com/Lazy-MrPi/cordova-plugin-umeng/blob/master/README.md"
+}
